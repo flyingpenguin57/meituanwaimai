@@ -9,6 +9,8 @@ import {
     MenuList,
 } from "@material-tailwind/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Location from "../location/Location";
 export default function Header() {
 
     const [hasLogin, setHasLogin] = useState(false);
@@ -21,10 +23,16 @@ export default function Header() {
         setHasLogin(false)
     }
 
+    const navigate = useNavigate();
+
+    const onButtonClick = () => {
+      navigate('/login');
+    }
+
 
     return (
         <>
-            <div className="bg-gray-100 flex items-center justify-between sticky top-0">
+            <div className="bg-gray-100 flex items-center justify-between sticky top-0 z-50">
                 <div className="flex items-center h-full">
                     <Typography className="font-medium mr-2 md:ml-5 text-orange-500">
                         恰饭行不行
@@ -72,7 +80,9 @@ export default function Header() {
                     </Button>
                 </div>
                 <div className="flex items-center md:mr-5">
-                    <Button className="text-gray-700" style={{ display: hasLogin ? 'none' : 'block' }} onClick={handleLogin} color='white' size="sm">登陆/注册</Button>
+                    <Location></Location>
+
+                    <Button className="text-gray-700" style={{ display: hasLogin ? 'none' : 'block' }} onClick={onButtonClick} color='white' size="sm">登陆/注册</Button>
 
                     <Menu>
                         <MenuHandler style={{ display: !hasLogin ? 'none' : 'block' }}>

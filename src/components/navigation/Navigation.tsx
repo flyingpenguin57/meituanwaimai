@@ -21,6 +21,7 @@ import {
     UserIcon
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
     const [open, setOpen] = React.useState(0);
@@ -29,11 +30,17 @@ export default function Nav() {
         setOpen(open === value ? 0 : value);
     };
 
+    const navigate = useNavigate();
+
+    const onOrderButtonClick = () => {
+      navigate('/');
+    }
+
     return (
-        <div className="w-48 p-1 sticky top-20 border-2 border-orange-500">
+        <div className="w-48 p-1 fixed left-0 top-1/4  bg-gray-100">
 
             <List>
-                <ListItem className="w-40">
+                <ListItem className="w-40 text-orange-500" onClick={onOrderButtonClick}>
                     <ListItemPrefix>
                         <BuildingStorefrontIcon className="h-5 w-5" />
                     </ListItemPrefix>
@@ -44,7 +51,7 @@ export default function Nav() {
 
                 <hr className="my-1 border-blue-gray-50 w-40" />
 
-                <ListItem className="w-40">
+                <ListItem className="w-40 text-orange-500">
                     <ListItemPrefix>
                         <ClipboardDocumentListIcon className="h-5 w-5" />
                     </ListItemPrefix>
@@ -54,7 +61,7 @@ export default function Nav() {
                 <hr className="my-1 border-blue-gray-50 w-40" />
 
 
-                <ListItem className="w-40">
+                <ListItem className="w-40 text-orange-500">
                     <ListItemPrefix>
                         <RocketLaunchIcon className="h-5 w-5" />
                     </ListItemPrefix>
@@ -64,7 +71,7 @@ export default function Nav() {
                 <hr className="my-1 border-blue-gray-50 w-40" />
 
 
-                <ListItem className="w-40">
+                <ListItem className="w-40 text-orange-500">
                     <ListItemPrefix>
                         <ChatBubbleOvalLeftEllipsisIcon className="h-5 w-5" />
                     </ListItemPrefix>
@@ -77,7 +84,7 @@ export default function Nav() {
                 <hr className="my-1 border-blue-gray-50 w-40" />
 
 
-                <ListItem className="w-40">
+                <ListItem className="w-40 text-orange-500">
                     <ListItemPrefix>
                         <ShoppingCartIcon className="h-5 w-5" />
                     </ListItemPrefix>
@@ -99,12 +106,12 @@ export default function Nav() {
                         />
                     }
                 >
-                    <ListItem className="p-0" selected={open === 1}>
+                    <ListItem className="p-0 " selected={open === 1}>
                         <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3">
                             <ListItemPrefix>
-                                <UserCircleIcon className="h-5 w-5" />
+                                <UserCircleIcon className="h-5 w-5 text-orange-500" />
                             </ListItemPrefix>
-                            <Typography color="blue-gray" className="mr-auto font-normal">
+                            <Typography className="mr-auto font-normal text-orange-500">
                                 个人中心
                             </Typography>
                         </AccordionHeader>
@@ -126,10 +133,6 @@ export default function Nav() {
                         </List>
                     </AccordionBody>
                 </Accordion>
-
-
-
-
             </List>
         </div>
     );
